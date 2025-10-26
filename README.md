@@ -44,18 +44,49 @@ This decision prioritizes on-chain efficiency and transparency over graphical pr
 
 ---
 
-## System Architecture
+## System Design
 
-The system is built using a **modular architecture** consisting of three main components:
+The oracle system follows a modular and layered architecture that separates responsibilities across dedicated smart contracts.  
+This structure allows for extensibility, maintainability, and integration with multiple decentralized exchange (DEX) protocols.
 
-1. **Data Sources Module:**  
-   Interfaces with AMM protocols and Chainlink feeds.
+The design is divided into four main layers:
 
-2. **Oracle Core Module:**  
-   Processes incoming requests, computes prices, and maintains the registry of data sources.
+1. **Main Contract Layer**
 
-3. **Registry Module:**  
-   Handles configuration, default source assignment, and data consistency.
+   - **Oracle.sol**: The core contract responsible for aggregating data from different sources.  
+     It queries wrapper contracts, computes comparative prices, and exposes standardized functions to retrieve token pair values.
+
+2. **Oracle Interface Layer**
+
+   - **IOracle.sol** and **IEvents.sol**: Define the external functions and event structures used to interact with the oracle.  
+     This ensures consistent communication between the oracle core and external applications or protocols.
+
+3. **Wrapper Layer**
+
+   - Contains individual adapters (“wrappers”) for each supported DEX or pricing protocol.  
+     These wrappers implement a uniform interface so that the oracle can interact with heterogeneous sources transparently.  
+     Included wrappers:
+     - `WrapperUniswapV3.sol`
+     - `WrapperUniswapV2.sol`
+     - `WrapperSushiswap.sol`
+     - `WrapperCurveFi.sol`
+     - `WrapperChainlink.sol`
+     - `Wrapper1Inch.sol`
+
+4. **Wrapper Interface Layer**
+   - Defines the specific interfaces used by each wrapper to communicate with their corresponding protocols.  
+     These files abstract protocol-specific logic, ensuring modularity and easier integration of future sources.  
+     Included interfaces:
+     - `IQuoter.sol`
+     - `IUniv2Pair.sol`
+     - `IRegistry.sol`
+     - `ICryptoPool.sol`
+     - `I1Split.sol`
+
+This layered design allows the oracle to be easily extended by adding new wrappers and interfaces without modifying the main oracle contract.  
+Each component interacts through well-defined interfaces, ensuring scalability and interoperability across different AMMs and on-chain data providers.
+
+![System Architecture](./dan.png)
 
 ---
 
