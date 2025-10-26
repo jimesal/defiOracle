@@ -133,7 +133,7 @@ Copy the smart contracts and test files from the `solidity` directory of this pr
 
 ```bash
 solidity/contracts/
-solidity/test/
+solidity/interfaces/
 ```
 
 ### 8. Compile and Test
