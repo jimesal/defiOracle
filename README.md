@@ -1,16 +1,20 @@
 # Price Oracle for Automated Market Makers
-
-### Smart Contract Integration Project
-
----
+**Project completed on June 2022**
 
 ## Project Overview
 
-This project implements a **Price Oracle** designed to aggregate and provide reliable, real-time token pricing information across multiple **Automated Market Maker (AMM)** platforms.  
-The solution was developed as part of a practical study on decentralized finance infrastructure and focuses on the **engineering and implementation** aspects of an interoperable oracle system using **Smart Contracts**.
+This project implements a Price Oracle designed to aggregate and provide reliable, real-time token pricing information across multiple Automated Market Maker (AMM) platforms.  
+The solution was developed as part of a practical study on decentralized finance infrastructure and focuses on the engineering and implementation aspects of an interoperable oracle system using Smart Contracts.
 
-The system retrieves on-chain price data directly from decentralized exchanges and aggregators such as **Uniswap V2**, **Uniswap V3**, **Sushiswap**, **1inch**, **Curve**, and **Chainlink**.  
+The system retrieves on-chain price data directly from decentralized exchanges and aggregators such as Uniswap V2, Uniswap V3, Sushiswap, 1inch, Curve, and Chainlink.  
 It allows developers or automated agents to query and compare exchange rates between token pairs, selecting the most favorable swap conditions.
+
+---
+
+## Disclaimer
+
+This project was developed for academic purposes only.  
+It is not intended for production use, and no guarantees are made regarding its security, performance, or functionality.  
 
 ---
 
